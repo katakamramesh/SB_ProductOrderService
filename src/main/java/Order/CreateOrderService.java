@@ -1,5 +1,6 @@
 package Order;
 
+import Products.CustomException;
 import Products.ProductData;
 import Products.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,7 @@ public class CreateOrderService {
     @Autowired
     ProductData productData;
 
-    public ResponseEntity<CreateOrderResponse> handle(CreateOrderRequest createOrderRequest) {
+    public ResponseEntity<CreateOrderResponse> handle(CreateOrderRequest createOrderRequest) throws CustomException {
         log.info("CreateOrderService: Inside handle method");
         try {
             productData = productService.handle(createOrderRequest.id);
@@ -29,7 +30,7 @@ public class CreateOrderService {
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch(Exception e){
             log.error("CreateOrderService: exception Occurred while fetching data from db");
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            throw new CustomException("Oops an error occurred ",HttpStatus.EXPECTATION_FAILED.value());
         }
 
     }

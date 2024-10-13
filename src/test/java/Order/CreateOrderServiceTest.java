@@ -23,7 +23,7 @@ public class CreateOrderServiceTest {
     CreateOrderService createOrderService;
 
     @Test
-    void testOrderHandleEmptyData(){
+    void testOrderHandleEmptyData() throws CustomException {
         Assertions.assertNotNull(createOrderService.handle(Mockito.mock(CreateOrderRequest.class)));
     }
 

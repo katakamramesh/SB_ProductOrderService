@@ -1,5 +1,6 @@
 package Order;
 
+import Products.CustomException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,7 @@ public class OrderController {
 
     @PostMapping("/orders")
     public ResponseEntity<CreateOrderResponse> createNewOrder(
-            @RequestBody CreateOrderRequest createOrderRequest){
+            @RequestBody CreateOrderRequest createOrderRequest) throws CustomException {
         CreateOrderService createOrderService = new CreateOrderService();
         createOrderService.handle(createOrderRequest);
 
