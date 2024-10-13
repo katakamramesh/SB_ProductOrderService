@@ -24,7 +24,7 @@ public class GetAllProductServiceTest {
     void testProductHandle() throws CustomException {
         List<ProductData> mockNameList = Mockito.mock(List.class);
 
-        when(productRepository.getAllData()).thenReturn(mockNameList);
+        when(productRepository.findAllData()).thenReturn(mockNameList);
         Assertions.assertNotNull(getAllProductService.handle());
     }
 

@@ -1,10 +1,8 @@
 package Products;
 
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -21,7 +19,7 @@ public class ProductService {
     public ProductData handle(String id) throws CustomException {
         log.info("ProductService: inside handle method");
         try{
-            productData = productRepository.getSpecificData(id);
+            productData = productRepository.findByData(id);
             if(ObjectUtils.isEmpty(productData)){
                 log.info("no data found, returning empty list");
                 return productData;

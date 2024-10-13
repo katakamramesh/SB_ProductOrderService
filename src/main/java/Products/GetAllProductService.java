@@ -18,7 +18,7 @@ public class GetAllProductService {
         log.info("GetAllProductService: inside the handle method of get all products");
         List<ProductData> list;
         try{
-            list = productRepository.getAllData();
+            list = productRepository.findAllData();
             if(ObjectUtils.isEmpty(list)){
                 log.info("GetAllProductService: no data found in db");
                 return list;
